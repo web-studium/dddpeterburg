@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <title>3D Peterburg</title>
+  <link rel="stylesheet" href="/assets/reset.css">
+  <link rel="stylesheet" href="/assets/jquery-ui.css">
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <script type="text/javascript" src="/assets/jquery.js"></script>
+  <script type="text/javascript" src="/assets/jquery-ui.js"></script>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-account">
+        <a class="img-lenta" href="#" title=""><img src="/assets/lenta.png" alt="" /></a>
+        <ul class="account">
+            
+            <% if user_signed_in? %>
+            	<li><a href="#"><%= current_user.email %></a></li>
+	            <li><span class="account-money">[100 руб.]<button type="button" class="btn-plus"></button></span></li>
+	            <li><a href="#">Менеджер</a></li>
+	            <%= link_to "Выйти", sign_out_path %>
+            <% else %>
+            	<li><a href="<%= new_user_session_path %>" class="btn-login">Войти</a></li>
+            	или
+            	<%= link_to "Регистрация", new_user_registration_path %>
+            <% end %>
+            
+        </ul>
+    </div>
+    <div class="header-menu clearfix">
+        <div class="logo"><a href="#" title="3D Peterburg"><img src="/assets/logo.png" alt="3D Peterburg" /></a></div>
+        <a href="#">Смотри и езжай</a>
+        <a href="#">Оформить визу, страховку</a>
+        <a href="3">Заказать билет со скидкой (авиа, ж/д)</a>
+        <a href="#">Онлайн сервисы</a>
+        <a href="#">Справочник туриста</a>
+        <a href="#">Поиск по карте</a>
+    </div>
+</div>
+
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<%= yield %>
+
+<div class="footer">
+    <div class="footer-banners">
+        <a href="#"><img src="/assets/banner-1.jpg" alt="" /></a>
+        <a href="#"><img src="/assets/banner-2.jpg" alt="" /></a>
+        <a href="#"><img src="/assets/banner-3.jpg" alt="" /></a>
+        <a href="#"><img src="/assets/banner-4.jpg" alt="" /></a>
+    </div>
+    <div class="footer-panel">
+        <div class="wrap-panel">
+            <div class="left">
+                <a href="#">О проекте</a>
+                <a href="#">Контакты</a>
+                <a href="#">Партнеры</a>
+                <a href="#">размещение и реклама</a>
+                <a href="#">Заказать виртуальный тур</a>
+            </div>
+            <div class="right">
+                &copy; 2012 &laquo;<a href="#">Студиум</a>&raquo;
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
